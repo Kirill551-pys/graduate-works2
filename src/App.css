@@ -1,0 +1,66 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  width: 990px;
+  max-height: 68px;
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; 
+  padding: 14px; 
+}
+
+.span {
+  font-size: 34px;
+  font-weight: 100;
+  line-height: 39px;
+}
+
+.button {
+  width: 71px;
+  height: 40px;
+  background-color: #16a6af;
+  color: white;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 16px;
+  border-radius: 3px;
+}
+
+.nav {
+    padding: 0 0 10px 0; 
+    display: flex; 
+    justify-content: center; 
+    width: 100%; 
+    color: black;
+}
+
+.day {
+  padding: 20px;
+  width: 124px;
+  height: 48px;
+  border-radius: 2px;
+  background-color: #f8f8f8;
+  margin: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  transition: transform 0.2s;
+  box-shadow: 0px 2px 2px 0px #0000003D;
+}
+
+.day:hover {
+  transform: scale(1.05);
+}
+
+.weekend {
+  color: red;
+}
