@@ -1,21 +1,28 @@
 import React from 'react';
+import './App.css';
+import { Route, Routes } from 'react-router-dom';
 import Header from './Header';
 import Calendar from './Calendar';
 import CinemaData from './CinemaData';
-import './App.css'; 
+import SeanceDetail from './SeanceDetail'; 
 
-function App() {
-  const handleClick = () => {
-    alert('Кнопка нажата!');
-  };
+  function HomePage() {
+    return (
+      <div>
+        <Header />
+        <Calendar />
+        <CinemaData />
+      </div>
+    );
+  }
 
-  return (
-    <div className="App">
-      <Header onButtonClick={handleClick} />
-      <Calendar />
-      <CinemaData />
-    </div>
-  );
-}
-
-export default App;
+  function App() {
+    return (
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/seance/:id" element={<SeanceDetail />} />
+        </Routes>
+    );
+  }
+  
+  export default App;

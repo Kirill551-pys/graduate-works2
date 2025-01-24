@@ -64,3 +64,108 @@
 .weekend {
   color: red;
 }
+
+.contain {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;
+}
+
+.movie {
+  display: grid;
+  grid-template-areas:
+  "movie-img movie-text"
+  "movie__description movie__description";
+  grid-template-rows: 191px;
+  grid-template-columns: 117px;
+  background-color: #F1EBE6F2;
+  border-radius: 2px;
+  margin: 10px;
+  padding: 10px;
+  width: 990px;
+  height: 380px;
+}
+
+.movie-img {
+   display: flex;
+    width: 125px;
+    height: 205px;
+    padding-bottom: 30px;
+}
+.movie__description {
+  display: flex;
+  flex-wrap: wrap;
+  width: 835px;
+  height: 205px;
+  padding-bottom: 104.4px;
+  padding-left: 15px;
+  gap: 10px;
+}
+
+.movie-text {
+  display: flex;
+  width: 820px;
+  height: 18px;
+  padding-right: 415px;
+  color: #000000;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.movie-data {
+  display: flex;
+  width: 820px;
+  height: 16px;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000000;
+}
+
+.movie-seances__hall {
+    display: flex;
+    flex-wrap: wrap;
+    width: 960px;
+    height: 63px;
+    gap: 7px;
+    margin-top: 10px; 
+    font-weight: 400; 
+    font-size: 14px; 
+    color: #000000; 
+
+}
+
+.movie-seances {
+  display: flex;
+ flex-wrap: wrap;
+}
+
+.hall-name {
+  display: flex;
+  width: 960px;
+  height: 18px;
+}
+
+.seances-name { 
+  display: flex;
+  width: 960px;
+  height: 37px;
+  gap: 4px;
+}
+
+.time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 53px;
+  height: 33px;
+  border-radius: 2px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 0px 2px 0px #0000001F;
+  box-shadow: 0px 2px 2px 0px #0000003D;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
+
+}
