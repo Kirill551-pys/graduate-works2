@@ -245,10 +245,10 @@
     text-transform: uppercase;
   }
   .zoomed {
-    transform: scale(1.2); /* Увеличиваем контейнер */
-    transition: transform 0.3s ease; /* Добавляем плавность */
-    z-index: 1000; /* Поднимаем над другими элементами */
-    position: relative; /* Важно для абсолютного позиционирования дочерних элементов */
+    transform: scale(1.2);
+    transition: transform 0.3s ease; 
+    z-index: 1000; 
+    position: relative; 
   }
 
   .additional-content {
@@ -256,17 +256,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный фон */
+    background-color: rgba(255, 255, 255, 0.9); 
     border-radius: 8px;
     padding: 16px;
-    position: absolute; /* Абсолютное позиционирование */
+    position: absolute; 
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Центрирование */
+    transform: translate(-50%, -50%); 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1001; /* Показываем поверх всего */
-    width: 200px; /* Фиксированная ширина */
-    text-align: center; /* Центрируем текст */
+    z-index: 1001; 
+    width: 200px; 
+    text-align: center; 
   }
 
   .additional-image {

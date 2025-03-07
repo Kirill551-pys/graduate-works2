@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { SeanceContext } from "./SeanceContext";
-import logo from "./img/Scheme.png"; // Убедитесь, что путь верный
+import logo from "./img/Scheme.png";
 import "./css/SeanceDetail.css";
 
 const SeanceDetail = () => {
@@ -12,7 +12,6 @@ const SeanceDetail = () => {
   const { selectedSeance } = useContext(SeanceContext);
   const navigate = useNavigate();
 
-  // Состояние для управления размером контейнера и видимостью дополнительного контента
   const [isContainerZoomed, setIsContainerZoomed] = useState(false);
 
   useEffect(() => {
@@ -86,18 +85,16 @@ const SeanceDetail = () => {
     });
   };
 
-  // Функция для обработки двойного клика
   const handleInfoDoubleClick = () => {
-    setIsContainerZoomed(!isContainerZoomed); // Переключаем состояние
+    setIsContainerZoomed(!isContainerZoomed); 
   };
 
-  // Проверяем размер экрана и устанавливаем обработчик
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
 
     const handleScreenResize = (e) => {
       if (e.matches) {
-        setIsContainerZoomed(false); // Сбрасываем увеличение при изменении размера
+        setIsContainerZoomed(false);
       } else {
         setIsContainerZoomed(false);
       }
@@ -105,7 +102,6 @@ const SeanceDetail = () => {
 
     mediaQuery.addEventListener("change", handleScreenResize);
 
-    // При монтировании компонента проверяем текущий размер экрана
     if (mediaQuery.matches) {
       setIsContainerZoomed(false);
     }
@@ -142,10 +138,10 @@ const SeanceDetail = () => {
         <section className="row row-section">
           <div
             className={`cul cul-buying_info ${isContainerZoomed ? "zoomed" : ""}`}
-            onDoubleClick={handleInfoDoubleClick} // Добавляем обработчик двойного клика
+            onDoubleClick={handleInfoDoubleClick}
             style={{
               cursor: window.matchMedia("(max-width: 768px)").matches ? "zoom-in" : "default",
-              position: "relative", // Важно для абсолютного позиционирования дочерних элементов
+              position: "relative", 
             }}
           >
             <div className="buying__info-description">
@@ -154,7 +150,6 @@ const SeanceDetail = () => {
               <p className="Text-name">Зал: {selectedSeance.hallName}</p>
             </div>
 
-            {/* Дополнительный контент при увеличении */}
             {isContainerZoomed && (
               <div className="additional-content">
                 <img
