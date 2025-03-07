@@ -1,0 +1,477 @@
+.section-hall-4 {
+    max-width: 962px;
+    width: 100%;
+    height: 686px;
+    background-color: #EAE9EBF2;
+    position: relative;
+  }
+
+  .section-hall-4::before {
+    content: ''; 
+    position: absolute; 
+    display: block;
+    width: 2px;
+    height: 686px;
+    background-color:#BC95D6;
+    left: 63px;
+}
+
+.row-conf-step-wrapper-4 {
+    width: 100%;
+    height: 591px;
+    justify-content: center;
+}
+
+.cul-sesion-paragraph {
+    width: 816px;
+    height: 57px;
+    padding-top: 17px;
+    padding-right: 632px;
+    margin-left: 104px;
+    margin-top: 35px;
+}
+
+.button-sesion {
+    width: 194px;
+    height: 40px;
+    border-radius: 3px;
+    padding: 11.2px 32px 11.9px 32px;
+    background-color: #16A6AF;
+    box-shadow: 0px 3px 3px 0px #0000003D;
+}
+
+.text-sesion {
+    width: 130px;
+    height: 16px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.cul-film-list {
+    display: flex;
+    width: 791px;
+    height: 117px;
+    gap: 15px;
+    margin-left: 104px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.film-card {
+    display: flex;
+    width: 259px;
+    height: 52px;
+    background-color: #CAFF85;
+    border: 1px solid #0000004D;
+    position: relative;
+}
+
+.text-card {
+    width: 201px;
+    height: 32px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+}
+
+.text-time {
+    width: 68px;
+    height: 16px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 0;
+    color: #000000B2;
+}
+.Frame-12 {
+    display: flex;
+    width: 221px;
+    height: 52px;
+    padding-right: 10px;
+    padding-left: 10px;
+    gap:10px;
+}
+.film-card-2 {
+    display: flex;
+    width: 201px;
+    height: 52px;
+    gap: 4px;
+    flex-wrap: wrap ;
+}
+
+.delete-film {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    padding: 4px;
+    gap: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 3px 3px 0px #0000003D;
+    position: absolute;
+    bottom: 3px;
+    right: 2px;
+}
+
+.delete-film::before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    top: 2.5px;
+    left: 3px;
+    background-image: url(../img/before.png);
+    background-size:cover;
+}
+
+
+.cul-conf-step-seances {
+    display: flex;
+    max-width: 816px;
+    width: 100%;
+    height: 192px;
+    padding-right: 35px;
+    padding-left: 35px;
+    gap: 35px;
+    margin-left: 104px;
+    flex-wrap: wrap;
+}
+
+.conf-step-seances-hall {
+    width: 100%;
+    height: 78px;
+}
+
+.conf-step-seances-hall-heading {
+    width: 100%;
+    height: 18px;
+    padding-right: 711px;
+}
+
+.text-hall-heading {
+    width: 45px;
+    height: 18px;
+    max-width: 756px;
+    max-height: 18.4px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    color:#000000;
+}
+
+.timeline {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    border: 1px solid #848484
+}
+
+.session-item {
+    display: inline-block;
+    width: 72px;
+    height: 40px;
+    padding: 10px;
+    background-color: #85FF89;
+    border: 1px solid #0000004D;
+}
+.session-item-title {
+    width: 56px;
+    height: 18px;
+}
+
+.session-item-title-text {
+    width: 56px;
+    height: 20px;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 10px;
+    color:#000000;
+}
+
+.session-item-time::before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 5px;
+    background-color: #848484;
+    position: relative;
+    left: 14px
+}
+
+.session-item-time{
+    width: 30px;
+    height: 14px;
+    margin-top:20px
+}
+
+.session-item-time-text {
+    width: 30px;
+    height: 13.8px;
+    max-width: 30px;
+    max-height: 13.8px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #848484;
+}
+
+.session-item img {
+    width: 38px;
+    height: 50px;
+}
+
+.delete-film {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.text-session-title{
+    width: 56px;
+    height: 20px;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 10px;
+    color:#000000;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.row-modal-content {
+    display: flex;
+    align-items: center;
+    width: 960px;
+    height: 380px;
+    padding-bottom: 35px;
+    gap: 34px;
+    background-color: #EAE9EBF2;
+}
+.cul-modal-header {
+    width: 960px;
+    height: 57px;
+    padding: 16px 42px 14px 42px;
+    background-color: #63536C;
+}
+
+.modal-heading {
+    display: flex;
+    width: 876px;
+    height: 27px;
+    justify-content: space-between;
+}
+
+.modal-content h3 {
+    width: 248px;
+    height: 25px;
+    max-width: 876px;
+    max-height: 25.3px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 25px;
+    text-transform: uppercase;
+}
+
+.cul-modal-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 960px;
+    height: 180px;
+    padding-bottom: 8px;
+    gap: 8px;
+}
+
+.modal-label { 
+    display: flex;
+    width: 752.8px;
+    height: 52px;
+    gap: 2px;
+}
+
+.modal-content p {
+    width: 84px;
+    height: 14px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #848484;
+    margin-bottom: 0;
+}
+
+.modal-content input[type="time"] {
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.label-modal-form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 52px;
+    gap: 2px;
+}
+
+.text-label-modal-form {
+    width: 84px;
+    height: 14px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #848484;
+}
+
+.select-modal-form {
+    width: 752.8px;
+    height: 36px;
+    padding: 8px 12px;
+    background-color: #FFFFFF;
+    border: 1px solid #B7B7B7;
+}
+
+.option-select {
+    display: flex;
+    width: 728.8px;
+    height: 20px;
+    justify-content: space-between;
+}
+.text-option-select {
+    width: 112px;
+    height: 20px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.2x;
+    color:#000000;
+}
+
+.cul-fieldset-grid-seances {
+    display: flex;
+    justify-content: center;
+    max-width: 816px;
+    width: 100%;
+    height: 57px;
+    margin-top: 36px;
+    gap: 14.48px;
+}
+
+.cul-modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 347px;
+    height: 40px;
+    gap: 14px;
+}
+
+.button-modal-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 194px;
+    height: 40px;
+    border-radius: 3px;
+    padding: 11.2px 32px 11.9px 32px;
+    background-color: #16A6AF;
+    box-shadow: 0px 3px 3px 0px #0000003D;
+}
+
+.button-modal-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 139px;
+    height: 40px;
+    border-radius: 3px;
+    padding: 11.2px 32px 11.9px 32px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 3px 3px 0px #0000003D;
+}
+
+.modal-content .text-button-mods {
+    all: unset;
+    width: 130px;
+    height: 16px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+@media (max-width: 768px) {
+    .cul-sesion-paragraph {
+        padding-right: 0;
+    }
+    .cul-conf-step-seances {
+        width: 552px;
+        height: 191px;
+    }
+    .conf-step-seances-hall-heading {
+        padding-right: 0;
+    }
+}
+
+@media (max-width : 576px) {
+    .cul-sesion-paragraph {
+        max-width: 328px;
+        margin-left: 31px;
+        padding-right: 0;
+    }
+    .cul-film-list {
+        max-width: 328px;
+        gap: 15px;
+        margin-left: 31px;
+    }
+    .conf-step-seances-hall-heading{
+        max-width: 328px;
+        padding: 0;
+    }
+    .cul-conf-step-seances {
+        max-width: 328px;
+        margin-left : 31px;
+        padding: 0;
+    }
+
+    .cul-fieldset-grid-seances {
+        max-width: 328px;
+        margin-left: 31px;
+    }
+    .section-hall-4::before {
+        visibility: hidden;
+    }
+
+    .modal-overlay {
+        max-width: 390px;
+    }
+    .row-modal-content {
+        max-width: 390px;
+        height: 398px;
+        gap: 16px;
+    }
+
+    .modal-heading {
+        width: 100%;
+    }
+}
+

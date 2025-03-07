@@ -1,25 +1,42 @@
-.App {
-  display: flex;
-  flex-direction: column;
-  width: 990px;
-  max-height: 68px;
-  text-align: center;
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.header {
+body {
+  background-image: url(./client/img/background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+
+.row-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%; 
-  padding: 14px; 
+  padding: 14px;
+  width: 100%;
+  max-width: 990px;
 }
 
+.text-heading-client{
+  width: 212px;
+  height: 39px;
+  max-width: 962px;
+  max-height: 39.1px;
+  font-weight: 900;
+  font-size: 31px;
+  line-height: 39px;
+}
 .span {
-  font-size: 34px;
+  font-size: 31px;
   font-weight: 100;
   line-height: 39px;
 }
+.cul-button {
+    justify-content: flex-end;
 
+}
 .button {
   width: 71px;
   height: 40px;
@@ -33,21 +50,30 @@
   border-radius: 3px;
 }
 
-.nav {
-    padding: 0 0 10px 0; 
-    display: flex; 
-    justify-content: center; 
-    width: 100%; 
-    color: black;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  
 }
 
-.day {
-  padding: 20px;
-  width: 124px;
+.row-nav {
+  padding: 0 0 10px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  max-width: 990px;
+  width: 100%;
+  color: black;
+}
+
+.cul-day {
+  width: 12.63%;
   height: 48px;
+  padding: 20px;
   border-radius: 2px;
   background-color: #f8f8f8;
-  margin: 5px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -55,6 +81,7 @@
   align-items: flex-start;
   transition: transform 0.2s;
   box-shadow: 0px 2px 2px 0px #0000003D;
+  color: black;
 }
 
 .day:hover {
@@ -64,38 +91,43 @@
 .weekend {
   color: red;
 }
-
-.contain {
-  display: flex;
-  flex-wrap: wrap; 
-  justify-content: space-between;
+.selected {
+  height: 52px;
+  width: 24.39%;
+  border-radius: 2px;
+  background-color: #FFFFFF; 
+  color: #000000;
+  font-weight: 700;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); 
 }
 
-.movie {
+.row-movie {
   display: grid;
   grid-template-areas:
-  "movie-img movie-text"
-  "movie__description movie__description";
+    "movie-img movie-text"
+    "movie__description movie__description";
   grid-template-rows: 191px;
   grid-template-columns: 117px;
   background-color: #F1EBE6F2;
   border-radius: 2px;
   margin: 10px;
   padding: 10px;
-  width: 990px;
+  width: 100%;
+  max-width: 990px;
   height: 380px;
 }
 
 .movie-img {
-   display: flex;
-    width: 125px;
-    height: 205px;
-    padding-bottom: 30px;
+  display: flex;
+  width: 125px;
+  height: 205px;
+  padding-bottom: 30px;
 }
-.movie__description {
+
+.cul-movie__description {
   display: flex;
   flex-wrap: wrap;
-  width: 835px;
+  width: 100%;
   height: 205px;
   padding-bottom: 104.4px;
   padding-left: 15px;
@@ -104,52 +136,62 @@
 
 .movie-text {
   display: flex;
-  width: 820px;
+  width: 100%;
   height: 18px;
-  padding-right: 415px;
   color: #000000;
   font-weight: 700;
   font-size: 16px;
   line-height: 18px;
 }
 
+.film-description {
+  display: flex;
+  width: 100%;
+  max-width: 598px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color:#000000;
+
+
+}
 .movie-data {
   display: flex;
-  width: 820px;
+  width: 100%;
   height: 16px;
   font-weight: 300;
   font-size: 14px;
   line-height: 16px;
   color: #000000;
+  margin-top: 11px;
 }
 
-.movie-seances__hall {
-    display: flex;
-    flex-wrap: wrap;
-    width: 960px;
-    height: 63px;
-    gap: 7px;
-    margin-top: 10px; 
-    font-weight: 400; 
-    font-size: 14px; 
-    color: #000000; 
-
+.cul-movie-seances__hall {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 63px;
+  gap: 7px;
+  margin-top: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000;
 }
 
 .movie-seances {
   display: flex;
- flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .hall-name {
   display: flex;
-  width: 960px;
+  width: 100%;
   height: 18px;
 }
 
-.seances-name { 
+.seances-name {
   display: flex;
-  width: 960px;
+  width: 100%;
   height: 37px;
   gap: 4px;
 }
@@ -162,10 +204,48 @@
   height: 33px;
   border-radius: 2px;
   background-color: #FFFFFF;
-  box-shadow: 0px 0px 2px 0px #0000001F;
   box-shadow: 0px 2px 2px 0px #0000003D;
   font-weight: 400;
   font-size: 15px;
   line-height: 17px;
-
+  text-decoration: none;
+  color: black;
 }
+
+a.time {
+  color: black;
+}
+
+
+@media (max-width: 576px) {
+  body{
+    background-position: center;
+    background-size: cover;
+  }
+  .header-hall{
+    max-width: 362px;
+    width: 100%;    
+  }
+  .row-nav {
+    width: 390px;
+    padding: 0;
+    margin: 0;
+  }
+  .cul-day {
+    padding: 0;
+  }
+  .today{
+    width: 47px;
+    height: 13.8px;
+  }
+  .container {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+  .row-movie {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+} 

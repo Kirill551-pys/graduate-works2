@@ -1,0 +1,239 @@
+.row-popur-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 960px;
+    height: 484px;
+    margin-top: 120px;
+    padding-bottom: 35px;
+    gap: 34px;
+    background-color: #EAE9EBF2;
+}
+
+.cul-popur-header {
+    width: 100%;
+    height: 57px;
+    padding: 16px 42px;
+    background-color: #63536C;
+}
+
+.heading-popur {
+    display: flex;
+    justify-content: space-between;
+    width: 876px;
+    height: 27px;
+}
+
+.text-popur {
+    width: 248px;
+    height: 25px;
+    max-width: 876px;
+    max-height: 25.3px;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 25px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.back-button {
+    width: 22px;
+    height: 22px;
+    background-image: url(../img/close.png);
+    background-color: #63536C;
+    background-size: contain;
+}
+
+.cul-popur-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 960px;
+    width: 100%;
+    height: 284px;
+    padding-bottom: 8px;
+    gap: 8px
+}
+
+.label-title {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 52px;
+    gap: 2px;
+}
+
+.text-title {
+    width: 103px;
+    height: 14px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #848484;
+    margin: 0;
+}
+
+.title-input {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #b7b7b7;
+    padding: 8px;
+    background-color: #FFFFFF;
+}
+
+.label-duraction {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 52px;
+    gap: 2px;
+}
+
+.text-duraction {
+    width: 201px;
+    height: 14px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #848484;
+    margin: 0;
+}
+
+.form-input {
+    width: 100%;
+    height: 36px;
+    border: 1px solid #b7b7b7;
+    background-color: #FFFFFF;
+}
+
+.label-desription {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 96px;
+    gap: 2px;
+}
+
+.form-textarea {
+    width: 100%;
+    height: 80px;
+    max-width: 752px;
+    min-height: 80px;
+    max-height: 80px;
+    border: 1px solid #b7b7b7;
+    background-color: #FFFFFF;
+}
+
+.text-country {
+    width: 41px;
+    height: 14px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #848484;
+    margin: 0;
+}
+
+
+.form-input::-webkit-inner-spin-button,
+n {
+    -webkit-appearance: none; 
+    margin: 0;
+}
+
+.cul-conf-step-buttons {
+    display: flex;
+    width: 561px;
+    height: 40px;
+    gap: 14px;
+}
+
+.save-button-2 {
+    width: 194px;
+    height: 40px;
+    border-radius: 3px;
+    padding: 11.2px 32px 11.9px 32px;
+    background-color: #16A6AF;
+    box-shadow: 0px 3px 3px 0px #0000003D;
+}
+
+.text-save-2 {
+    width: 130px;
+    height: 16px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.label-poster {
+    width: 200px;
+    height: 40px;
+    border-radius: 3px;
+    padding: 11.2px 31.51px 11.9px 31.82px;
+    background-color: #16A6AF;
+    box-shadow: 0px 3px 3px 0px #0000003D;
+}
+
+.text-poster {
+    width: 137px;
+    height: 16px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.cancel-button {
+    width: 139px;
+    height: 40px;
+    border-radius: 3px;
+    padding: 11.2px 31.24px 11.9px 31.56px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 3px 3px 0px #0000003D;
+}
+
+.text-cancel {
+    width: 76px;
+    height: 16px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #63536C;
+    text-transform: uppercase;
+}
+
+@media (max-width: 576px) {
+    .row-popur-content {
+        max-width: 390px;
+        height: 556px;
+        gap:16px;
+    }
+    .cul-popur-header {
+        padding: 16px 42px 14px 42px;
+    }
+    .heading-popur {
+        max-width: 100%;
+    }
+
+  .form-textarea {
+    width: 370px;
+    height: 96px;
+  }
+  .cul-conf-step-buttons {
+    max-width: 200px;
+    height: 148px;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .save-button-2 {
+    width: 200px;
+  }
+  .cancel-button {
+    display: flex;
+    min-width: 200px;
+    justify-content: center;
+  }
+}
