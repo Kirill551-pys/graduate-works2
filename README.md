@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Кинотеатр: Управление залами, фильмами и сеансами
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Проект представляет собой веб-приложение для управления кинотеатром. В приложении можно настраивать конфигурацию залов, управлять фильмами, создавать расписание сеансов и открывать/закрывать продажи билетов. Для клиентов смотреть доступные сеансы, бронировать места, получить QR-код.
 
-## Available Scripts
+## Демо проекта
 
-In the project directory, you can run:
+Вы можете посмотреть демонстрацию проекта по ссылке:  
+[Ссылка на GitHub Pages](https://kirill551-pys.github.io/graduate-works2/)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Стек технологий
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Frontend:**
+   - **React.js**: Используется для создания интерактивного пользовательского интерфейса.
+   - **React Router DOM**: Для маршрутизации между страницами приложения.
+   - **CSS Modules**: Для стилизации компонентов с изоляцией стилей.
+   - **Bootstrap**: Популярная CSS-библиотека для быстрого создания адаптивных и стильных интерфейсов.
 
-### `npm run build`
+2. **Backend (API):**
+   - **Mock API**: Временные данные загружаются через эндпоинт `/alldata` (например, `https://shfe-diplom.neto-server.ru/alldata`).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Хранение данных:**
+   - **localStorage**: Используется для временного хранения данных о залах, фильмах и сеансах.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Инструменты разработки:**
+   - **npm / yarn**: Менеджеры пакетов для установки зависимостей.
+   - **GitHub Pages**: Для публикации проекта.
+   - **ESLint / Prettier**: Для поддержания чистого и согласованного кода.
+   - **Webpack**: Инструмент для сборки проекта, оптимизации ресурсов и управления зависимостями.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Функциональность
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Управление залами:**
+   - Создание, удаление и редактирование конфигурации залов (ряды, места, типы кресел).
+   - Отображение схемы зала с возможностью изменения состояния мест (свободное, VIP, заблокированное).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. **Управление фильмами:**
+   - Добавление, удаление и редактирование фильмов (название, продолжительность, постер).
+   - Отображение списка фильмов с возможностью перетаскивания для назначения сеансов.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. **Расписание сеансов:**
+   - Назначение фильмов на конкретные залы и время.
+   - Проверка на пересечение времени сеансов.
+   - **Просмотр расписания сеансов**:
+     - Пользователи могут просматривать все доступные сеансы для каждого зала.
+     - Сеансы отображаются в удобном формате с указанием времени начала, названия фильма и зала.
 
-## Learn More
+4. **Бронирование мест:**
+   - Пользователи могут выбирать свободные места в зале для бронирования.
+   - После выбора мест система проверяет их доступность и резервирует их.
+   - Забронированные места отображаются как "занятые" для других пользователей.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. **Получение QR-кода:**
+   - После успешного бронирования мест пользователь получает уникальный QR-код.
+   - QR-код содержит информацию о брони, включая выбранный сеанс, зал и места.
+   - QR-код можно использовать для входа в кинотеатр.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+6. **Открытие продаж:**
+   - Управление статусом продаж билетов для каждого зала (открыто/закрыто).
+---
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. **Клонируйте репозиторий:**
+   ```bash
+   git clone https://github.com/your-github-username/your-repo-name.git
+   cd your-repo-name
