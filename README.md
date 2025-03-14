@@ -68,5 +68,5 @@
 
 1. **Клонируйте репозиторий:**
    ```bash
-   git clone https://github.com/your-github-username/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/Kirill551-pys/graduate-works2.git
+   cd /graduate-works2
