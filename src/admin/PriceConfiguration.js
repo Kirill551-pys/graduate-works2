@@ -5,10 +5,9 @@ import { debounce } from "lodash";
 const PriceConfiguration = () => {
   const [selectedHallId, setSelectedHallId] = useState(null);
   const [hallPrices, setHallPrices] = useState({});
-  const [halls, setHalls] = useState([]); // Состояние для хранения данных о залах
+  const [halls, setHalls] = useState([]); 
   const [isSectionOpen, setIsSectionOpen] = useState(true);
 
-  // Функция для загрузки данных с сервера
   const fetchHallsFromServer = async () => {
     try {
       const response = await fetch("https://shfe-diplom.neto-server.ru/alldata");
@@ -16,15 +15,13 @@ const PriceConfiguration = () => {
         throw new Error(`Ошибка HTTP: ${response.status}`);
       }
       const data = await response.json();
-      console.log("Ответ от сервера:", data); // Логирование для отладки
+      console.log("Ответ от сервера:", data); 
 
-      // Проверка наличия данных о залах
       const rawHalls = data?.result?.halls || [];
       if (!Array.isArray(rawHalls)) {
         throw new Error("Данные о залах отсутствуют или имеют неверный формат.");
       }
 
-      // Преобразуем данные о залах в удобный формат
       const hallsData = rawHalls.map((hall) => ({
         id: hall.id,
         name: hall.hall_name,
@@ -32,9 +29,8 @@ const PriceConfiguration = () => {
         priceVip: hall.hall_price_vip,
       }));
 
-      setHalls(hallsData); // Сохраняем данные о залах в состоянии
+      setHalls(hallsData); 
 
-      // Инициализируем цены для залов
       const initialPrices = {};
       hallsData.forEach((hall) => {
         initialPrices[hall.id] = {
@@ -48,19 +44,16 @@ const PriceConfiguration = () => {
     }
   };
 
-  // Загружаем данные при монтировании компонента
   useEffect(() => {
     fetchHallsFromServer();
   }, []);
 
-  // Получение цен выбранного зала
   const getHallPrices = (hallId) => {
     return hallPrices[hallId] || { regular: 0, vip: 0 };
   };
 
   const { regular, vip } = getHallPrices(selectedHallId);
 
-  // Функция для обновления цен зала
   const debouncedUpdateHallPrices = debounce((hallId, prices) => {
     setHallPrices((prevPrices) => ({
       ...prevPrices,
@@ -68,7 +61,6 @@ const PriceConfiguration = () => {
     }));
   }, 300);
 
-  // Обработчик изменения цены обычных мест
   const handleRegularPriceChange = (e) => {
     const value = Math.max(0, parseInt(e.target.value, 10));
     if (!isNaN(value)) {
@@ -79,7 +71,6 @@ const PriceConfiguration = () => {
     }
   };
 
-  // Обработчик изменения цены VIP мест
   const handleVipPriceChange = (e) => {
     const value = Math.max(0, parseInt(e.target.value, 10));
     if (!isNaN(value)) {
@@ -90,7 +81,6 @@ const PriceConfiguration = () => {
     }
   };
 
-  // Обработчик отмены изменений
   const handleResetPrices = () => {
     if (selectedHallId) {
       const savedPrices = halls.find((hall) => hall.id === selectedHallId);
@@ -104,7 +94,6 @@ const PriceConfiguration = () => {
     }
   };
 
-  // Обработчик сохранения цен
   const handleSavePrices = () => {
     if (selectedHallId) {
       alert("Цены успешно сохранены!");
@@ -113,7 +102,6 @@ const PriceConfiguration = () => {
     }
   };
 
-  // Обработчик сворачивания/разворачивания секции
   const toggleSection = () => {
     setIsSectionOpen((prev) => !prev);
   };

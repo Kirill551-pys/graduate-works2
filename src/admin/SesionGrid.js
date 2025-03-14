@@ -6,7 +6,6 @@ import * as interact from "interactjs";
 const SesionGrid = () => {
   const navigate = useNavigate();
 
-  // Состояния для хранения данных
   const [films, setFilms] = useState([]);
   const [seances, setSeances] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,7 +16,6 @@ const SesionGrid = () => {
   const [selectedHallId, setSelectedHallId] = useState("");
   const [isSectionOpen, setIsSectionOpen] = useState(true);
 
-  // Функция для загрузки данных с сервера
   const fetchFilmsFromServer = async () => {
     try {
       const response = await fetch("https://shfe-diplom.neto-server.ru/alldata");
@@ -25,15 +23,13 @@ const SesionGrid = () => {
         throw new Error(`Ошибка HTTP: ${response.status}`);
       }
       const data = await response.json();
-      console.log("Ответ от сервера:", data); // Логирование для отладки
+      console.log("Ответ от сервера:", data);
 
-      // Проверка наличия данных о фильмах
       const rawFilms = data?.result?.films || [];
       if (!Array.isArray(rawFilms)) {
         throw new Error("Данные о фильмах отсутствуют или имеют неверный формат.");
       }
 
-      // Преобразуем данные о фильмах в удобный формат
       const filmsData = rawFilms.map((film) => ({
         id: film.id,
         title: film.film_name,
@@ -41,40 +37,34 @@ const SesionGrid = () => {
         poster: film.film_poster,
       }));
 
-      setFilms(filmsData); // Сохраняем данные о фильмах в состоянии
+      setFilms(filmsData); 
     } catch (error) {
       console.error("Ошибка при загрузке данных:", error);
     }
   };
 
-  // Загружаем данные при монтировании компонента
   useEffect(() => {
     fetchFilmsFromServer();
   }, []);
 
-  // Сохранение фильмов в localStorage
   const saveFilmsToStorage = () => {
     localStorage.setItem("films", JSON.stringify(films));
   };
 
-  // Сохранение сеансов в localStorage
   const saveSeancesToStorage = () => {
     localStorage.setItem("seances", JSON.stringify(seances));
   };
 
-  // Удаление фильма
   const handleDeleteFilm = (index) => {
     const updatedFilms = films.filter((_, i) => i !== index);
     setFilms(updatedFilms);
     saveFilmsToStorage();
   };
 
-  // Обработчик начала перетаскивания фильма
   const handleDragStart = React.useCallback((event, index) => {
     event.dataTransfer.setData("text", index.toString());
   }, []);
 
-  // Обработчик добавления сеанса
   const addSession = () => {
     if (!startTime.trim()) {
       alert("Укажите время начала сеанса!");
@@ -105,7 +95,6 @@ const SesionGrid = () => {
     saveFilmsToStorage();
   };
 
-  // Обработчик отмены добавления сеанса
   const cancelSession = () => {
     setIsModalOpen(false);
     setSelectedFilm(null);
@@ -113,14 +102,12 @@ const SesionGrid = () => {
     setStartTime("");
   };
 
-  // Обработчик сохранения всех данных
   const handleSaveAll = () => {
     saveFilmsToStorage();
     saveSeancesToStorage();
     alert("Данные успешно сохранены!");
   };
 
-  // Обработчик сворачивания/разворачивания секции
   const toggleSection = () => {
     setIsSectionOpen((prev) => !prev);
   };

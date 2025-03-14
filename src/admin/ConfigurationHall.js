@@ -5,10 +5,9 @@ import { debounce } from "lodash";
 const ConfigurationHall = () => {
   const [selectedHallId, setSelectedHallId] = useState(null);
   const [hallsConfig, setHallsConfig] = useState({});
-  const [halls, setHalls] = useState([]); // Состояние для хранения данных о залах
+  const [halls, setHalls] = useState([]); 
   const [isSectionOpen, setIsSectionOpen] = useState(true);
 
-  // Функция для загрузки данных с сервера
   const fetchHallsFromServer = async () => {
     try {
       const response = await fetch("https://shfe-diplom.neto-server.ru/alldata");
@@ -16,15 +15,13 @@ const ConfigurationHall = () => {
         throw new Error(`Ошибка HTTP: ${response.status}`);
       }
       const data = await response.json();
-      console.log("Ответ от сервера:", data); // Логирование для отладки
+      console.log("Ответ от сервера:", data);
 
-      // Проверка наличия данных о залах
       const rawHalls = data?.result?.halls || [];
       if (!Array.isArray(rawHalls)) {
         throw new Error("Данные о залах отсутствуют или имеют неверный формат.");
       }
 
-      // Преобразуем данные о залах в удобный формат
       const hallsData = rawHalls.map((hall) => ({
         id: hall.id,
         name: hall.hall_name,
@@ -33,18 +30,16 @@ const ConfigurationHall = () => {
         layout: hall.hall_config,
       }));
 
-      setHalls(hallsData); // Сохраняем данные о залах в состоянии
+      setHalls(hallsData);
     } catch (error) {
       console.error("Ошибка при загрузке данных:", error);
     }
   };
 
-  // Загружаем данные при монтировании компонента
   useEffect(() => {
     fetchHallsFromServer();
   }, []);
 
-  // Получение конфигурации выбранного зала
   const getHallConfig = (hallId) => {
     return halls.find((hall) => hall.id === hallId) || {
       rows: "",
@@ -55,7 +50,6 @@ const ConfigurationHall = () => {
 
   const { rows, seatsPerRow, layout } = getHallConfig(selectedHallId);
 
-  // Функция для обновления конфигурации зала
   const debouncedUpdateHallConfig = debounce((hallId, config) => {
     setHalls((prevHalls) =>
       prevHalls.map((hall) =>
@@ -64,7 +58,6 @@ const ConfigurationHall = () => {
     );
   }, 300);
 
-  // Обработчик изменения статуса места
   const debouncedToggleSeatStatus = debounce((rowIndex, seatIndex) => {
     if (selectedHallId) {
       const updatedLayout = [...(layout || [])];
@@ -87,12 +80,10 @@ const ConfigurationHall = () => {
     }
   }, 300);
 
-  // Обработчик выбора зала
   const handleSelectHall = (hallId) => {
     setSelectedHallId(hallId);
   };
 
-  // Обработчик изменения количества рядов
   const handleRowsChange = (e) => {
     const newRows = e.target.value;
     if (newRows === "") {
@@ -121,7 +112,6 @@ const ConfigurationHall = () => {
     }
   };
 
-  // Обработчик изменения количества мест в ряду
   const handleSeatsPerRowChange = (e) => {
     const newSeats = e.target.value;
     if (newSeats === "") {
@@ -150,12 +140,10 @@ const ConfigurationHall = () => {
     }
   };
 
-  // Обработчик клика по месту
   const handleSeatClick = (rowIndex, seatIndex) => {
     debouncedToggleSeatStatus(rowIndex, seatIndex);
   };
 
-  // Обработчик сворачивания/разворачивания секции
   const toggleSection = () => {
     setIsSectionOpen((prev) => !prev);
   };

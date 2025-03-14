@@ -3,10 +3,9 @@ import "./css/OpenSale.css";
 
 const OpenSale = () => {
   const [selectedHallId, setSelectedHallId] = useState(null);
-  const [hallsState, setHallsState] = useState([]); // Состояние для хранения данных о залах
+  const [hallsState, setHallsState] = useState([]); 
   const [isSectionOpen, setIsSectionOpen] = useState(true);
 
-  // Функция для загрузки данных с сервера
   const fetchHallsFromServer = async () => {
     try {
       const response = await fetch("https://shfe-diplom.neto-server.ru/alldata");
@@ -14,40 +13,35 @@ const OpenSale = () => {
         throw new Error(`Ошибка HTTP: ${response.status}`);
       }
       const data = await response.json();
-      console.log("Ответ от сервера:", data); // Логирование для отладки
+      console.log("Ответ от сервера:", data);
 
-      // Проверка наличия данных о залах
       const rawHalls = data?.result?.halls || [];
       if (!Array.isArray(rawHalls)) {
         throw new Error("Данные о залах отсутствуют или имеют неверный формат.");
       }
 
-      // Преобразуем данные о залах в удобный формат
       const hallsData = rawHalls.map((hall) => ({
         id: hall.id,
         name: hall.hall_name,
-        isActive: hall.hall_open === 1, // Продажи открыты, если hall_open === 1
+        isActive: hall.hall_open === 1, 
       }));
 
-      setHallsState(hallsData); // Сохраняем данные о залах в состоянии
+      setHallsState(hallsData); 
     } catch (error) {
       console.error("Ошибка при загрузке данных:", error);
     }
   };
 
-  // Загружаем данные при монтировании компонента
   useEffect(() => {
     fetchHallsFromServer();
   }, []);
 
-  // Обработчик клика по залу
   const handleHallClick = useCallback((hallId) => {
     setSelectedHallId((prevSelectedHallId) =>
       prevSelectedHallId === hallId ? null : hallId
     );
   }, []);
 
-  // Переключение статуса продаж
   const toggleSaleStatus = () => {
     if (!selectedHallId) {
       alert("Выберите зал для управления продажами.");
@@ -58,14 +52,13 @@ const OpenSale = () => {
       hall.id === selectedHallId
         ? {
             ...hall,
-            isActive: !hall.isActive, // Переключаем статус активности
+            isActive: !hall.isActive,
           }
         : hall
     );
 
     setHallsState(updatedHalls);
 
-    // Сохраняем обновленные данные в localStorage (если нужно)
     localStorage.setItem("halls", JSON.stringify(updatedHalls));
 
     const hallName = updatedHalls.find((hall) => hall.id === selectedHallId)?.name;
@@ -76,7 +69,6 @@ const OpenSale = () => {
     alert(`Статус зала "${hallName}" успешно ${status}!`);
   };
 
-  // Обработчик сворачивания/разворачивания секции
   const toggleSection = () => {
     setIsSectionOpen((prev) => !prev);
   };
