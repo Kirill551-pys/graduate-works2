@@ -26,6 +26,10 @@ const BodyBackground = ({ children }) => {
           document.body.style.backgroundImage = `url(${backgroundImageClient})`;
       } else if (location.pathname.startsWith ('/admin')) {
           document.body.style.backgroundImage = `url(${backgroundImageAdmin})`;
+          document.body.style.backgroundSize = 'cover'; 
+          document.body.style.backgroundRepeat = 'no-repeat';
+          document.body.style.backgroundPosition = 'center';
+          document.body.style.backgroundColor ="rgba(0, 0, 0, 0.5)";
       }
 
       return () => {

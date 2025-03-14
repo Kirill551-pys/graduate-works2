@@ -1,47 +1,26 @@
 .main-admin {
-  background-image: url(../img/admin.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 2973px;
-  padding-right: 474px;
-  padding-left: 474px;
-  background-color: #00000080;
   gap: 0.3px;
 }
-
-.row-section-hall {
-  max-width: 962px;
+.row-header-directorate {
+  max-width: 972px;
   width: 100%;
-  height: 310px;
-  background-color: #EAE9EBF2;
-  position: relative;
+  padding: 35px 42px 35px 104px;
 }
 
 .heading-hall {
   width: 212px;
-  height: 39px;
   max-width: 826px;
-  max-height: 39.1px;
   font-weight: 900;
   font-size: 34px;
   line-height: 39px;
 }
 
-.row-header-directorate {
-  max-width: 972px;
-  width: 100%;
-  height: 120px;
-  padding: 35px 42px 35px 104px;
-
-}
 
 .text-directorate {
   width: 216px;
-  height: 12px;
   max-width: 826px;
   font-weight: 400;
   font-size: 10px;
@@ -49,20 +28,28 @@
   letter-spacing: 5px;
   text-transform: uppercase;
 }
+
+.row-section-hall {
+  max-width: 962px;
+  width: 100%;
+  background-color: #EAE9EBF2;
+  position: relative;
+}
+
+
   
 .row-section-hall::before {
     content: ''; 
     position: absolute; 
     display: block;
     width: 2px;
-    height: 310px;
+    height: 100%;
     background-color:#BC95D6;
     left: 62px;
 }
 
 .cul-header-directorate-section {
     width: 100%;
-    height: 95px;
     padding: 35px 42px 35px 104px;
     background-color: #63536C;
     position: relative;
@@ -100,16 +87,16 @@
 
 .heading-directorate-section {
   width: 100%;
-  height: 25px;
   max-width: 826px;
-  max-height: 25.3px;
   font-weight: 700;
   font-size: 22px;
   line-height: 25px;
   text-transform: uppercase;
 }
-
-.cul-header-directorate-section::after {
+.closed-content {
+  display: flex;
+}
+.closed-content::after {
   content: '';
   display: block;
   width: 24px;
@@ -121,25 +108,30 @@
   position: absolute;
   right: 41px;
   top: 40px;
+  transition:  transform 0.3s ease;
+}
+
+.cul-header-directorate-section.closed::after {
+  transform: rotate(180deg);
 }
 
 .cul-conf-step-wrapper {
   display: flex;
   flex-direction: column;
   width: 962px;
-  height: 215px;
+  padding-bottom: 29.5px;
 }
 
 .text-available-halls {
   display: flex;
   width: 131px;
-  height: 18px;
   font-weight: 400;
   font-size: 16px;
   line-height: 18px;
   color: #000000;
   margin-top: 35px;
   margin-left: 104px;
+  padding-bottom: 14px;
  }
 
 .list {
@@ -147,7 +139,6 @@
   flex-direction: column;
   flex-wrap: wrap;
   width: 791px;
-  height: 50px;
   gap: 10px;
   margin-left: 81px;
   list-style: none;
@@ -202,7 +193,6 @@
 
 .button-directorate {
   width: 159px;
-  height: 40px;
   border-radius: 3px;
   padding: 11.2px 31.38px 11.9px 31.73px;
   background-color: #16A6AF;
@@ -212,12 +202,12 @@
 
 .text-create {
   width: 96px;
-  height: 16px;
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
   color: #FFFFFF;
   text-transform: uppercase;
+  margin: 0;
 }
 
 

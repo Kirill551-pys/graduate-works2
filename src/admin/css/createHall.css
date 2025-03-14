@@ -2,8 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 960px;
-    height: 260px;
+    max-width: 960px;
     margin-top: 100px;
     padding-bottom: 35px;
     gap: 34px;
@@ -14,7 +13,6 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 60px;
     padding-bottom: 8px;
     gap: 8px;
 }
@@ -24,13 +22,11 @@
     flex-wrap: wrap;
     width: 100%;
     max-width: 750px;
-    height: 52px;
     gap: 2px;
 }
 
 .text-label-contain {
     width: 84px;
-    height: 14px;
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
@@ -40,7 +36,6 @@
 
 .input-form-contain {
     width: 750px;
-    height: 35px;
     padding: 8px;
     background-color: #FFFFFF;
     border: 1px solid #B7B7B7;
@@ -49,7 +44,6 @@
 .cul-contain-create-buttons {
     display: flex;
     width: 347px;
-    height: 40px;
     gap: 14px;
 }
 

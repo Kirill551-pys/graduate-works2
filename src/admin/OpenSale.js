@@ -1,47 +1,53 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./css/OpenSale.css";
 
 const OpenSale = () => {
   const [selectedHallId, setSelectedHallId] = useState(null);
-  const [hallsState, setHallsState] = useState([]);
+  const [hallsState, setHallsState] = useState([]); // Состояние для хранения данных о залах
+  const [isSectionOpen, setIsSectionOpen] = useState(true);
 
-  const halls = useMemo(() => JSON.parse(localStorage.getItem("halls")) || [], []);
-
-  useEffect(() => {
-    setHallsState(halls);
-  }, [halls]);
-
-  useEffect(() => {
-    const savedHalls = JSON.parse(localStorage.getItem("halls"));
-    if (!Array.isArray(savedHalls)) {
-      console.warn("Некорректные данные о залах в localStorage. Используется пустой массив.");
-      localStorage.setItem("halls", JSON.stringify([]));
-    }
-  }, []); 
-
-  useEffect(() => {
-    const handleStorageChange = () => {
-      const savedHalls = JSON.parse(localStorage.getItem("halls")) || [];
-      if (!Array.isArray(savedHalls)) {
-        console.warn("Некорректные данные о залах в localStorage. Используется пустой массив.");
-        localStorage.setItem("halls", JSON.stringify([]));
+  // Функция для загрузки данных с сервера
+  const fetchHallsFromServer = async () => {
+    try {
+      const response = await fetch("https://shfe-diplom.neto-server.ru/alldata");
+      if (!response.ok) {
+        throw new Error(`Ошибка HTTP: ${response.status}`);
       }
-      setHallsState(savedHalls);
-    };
+      const data = await response.json();
+      console.log("Ответ от сервера:", data); // Логирование для отладки
 
-    window.addEventListener("storage", handleStorageChange);
+      // Проверка наличия данных о залах
+      const rawHalls = data?.result?.halls || [];
+      if (!Array.isArray(rawHalls)) {
+        throw new Error("Данные о залах отсутствуют или имеют неверный формат.");
+      }
 
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
+      // Преобразуем данные о залах в удобный формат
+      const hallsData = rawHalls.map((hall) => ({
+        id: hall.id,
+        name: hall.hall_name,
+        isActive: hall.hall_open === 1, // Продажи открыты, если hall_open === 1
+      }));
+
+      setHallsState(hallsData); // Сохраняем данные о залах в состоянии
+    } catch (error) {
+      console.error("Ошибка при загрузке данных:", error);
+    }
+  };
+
+  // Загружаем данные при монтировании компонента
+  useEffect(() => {
+    fetchHallsFromServer();
   }, []);
 
+  // Обработчик клика по залу
   const handleHallClick = useCallback((hallId) => {
     setSelectedHallId((prevSelectedHallId) =>
       prevSelectedHallId === hallId ? null : hallId
     );
   }, []);
 
+  // Переключение статуса продаж
   const toggleSaleStatus = () => {
     if (!selectedHallId) {
       alert("Выберите зал для управления продажами.");
@@ -52,13 +58,14 @@ const OpenSale = () => {
       hall.id === selectedHallId
         ? {
             ...hall,
-            isActive: !hall.isActive, 
+            isActive: !hall.isActive, // Переключаем статус активности
           }
         : hall
     );
 
     setHallsState(updatedHalls);
 
+    // Сохраняем обновленные данные в localStorage (если нужно)
     localStorage.setItem("halls", JSON.stringify(updatedHalls));
 
     const hallName = updatedHalls.find((hall) => hall.id === selectedHallId)?.name;
@@ -69,65 +76,79 @@ const OpenSale = () => {
     alert(`Статус зала "${hallName}" успешно ${status}!`);
   };
 
+  // Обработчик сворачивания/разворачивания секции
+  const toggleSection = () => {
+    setIsSectionOpen((prev) => !prev);
+  };
+
   return (
     <div className="container p-0">
-    <section className="section-hall-5">
-      <div className="row m-0"> 
-      <header className="cul cul-header-directorate-section">
-        <div className="line-3"></div>
-        <h2 className="heading-directorate-section">открыть продажи</h2>
-      </header>
-      </div>
-      <div className="row row-wrapper-open-sale m-0">
-        <div className="cul cul-paragraph-open-sale">
-          <p className="text-paragraph-open-sale">
-            Выберите зал для открытия/закрытия продаж:
-          </p>
+      <section className="section-hall-5">
+        <div className="row m-0">
+          <header className="cul cul-header-directorate-section">
+            <div className="line-3"></div>
+            <h2 className="heading-directorate-section">открыть продажи</h2>
+            <div
+              className="closed-content"
+              onClick={toggleSection}
+              style={{ cursor: "pointer" }}
+            ></div>
+          </header>
         </div>
-        <ul className="list-2">
-          {Array.isArray(hallsState) && hallsState.length > 0 ? (
-            hallsState.map((hall) => (
-              <li
-                key={hall.id}
-                className={`item-2 ${selectedHallId === hall.id ? "active" : ""}`}
-                onClick={() => handleHallClick(hall.id)}
-                style={{ cursor: "pointer" }}
+        {isSectionOpen && (
+          <div className="row row-wrapper-open-sale m-0">
+            <div className="cul cul-paragraph-open-sale">
+              <p className="text-paragraph-open-sale">
+                Выберите зал для открытия/закрытия продаж:
+              </p>
+            </div>
+            <ul className="list-2">
+              {hallsState.length > 0 ? (
+                hallsState.map((hall) => (
+                  <li
+                    key={hall.id}
+                    className={`item-2 ${
+                      selectedHallId === hall.id ? "active" : ""
+                    }`}
+                    onClick={() => handleHallClick(hall.id)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <span className="conf-step-selector">
+                      <p className="text-selector">{hall.name}</p>
+                    </span>
+                  </li>
+                ))
+              ) : (
+                <li className="item-2">
+                  <p className="text-selector">Залы отсутствуют</p>
+                </li>
+              )}
+            </ul>
+            <div className="cul cul-paragraph-open-sale-2">
+              <p className="text-this-open">Все готово к открытию</p>
+            </div>
+            {selectedHallId && (
+              <button
+                onClick={toggleSaleStatus}
+                disabled={!hallsState.find((hall) => hall.id === selectedHallId)}
+                className="open-sale-button"
               >
-                <span className="conf-step-selector">
-                  <p className="text-selector">{hall.name}</p>
+                <span
+                  className={
+                    hallsState.find((hall) => hall.id === selectedHallId)?.isActive
+                      ? "text-pause"
+                      : "text-open"
+                  }
+                >
+                  {hallsState.find((hall) => hall.id === selectedHallId)?.isActive
+                    ? "Приостановить продажу билетов"
+                    : "Открыть продажу билетов"}
                 </span>
-              </li>
-            ))
-          ) : (
-            <li className="item-2">
-              <p className="text-selector">Залы отсутствуют</p>
-            </li>
-          )}
-        </ul>
-        <div className="cul cul-paragraph-open-sale-2">
-          <p className="text-this-open">Все готово к открытию</p>
-        </div>
-        {selectedHallId && (
-          <button
-            onClick={toggleSaleStatus}
-            disabled={!hallsState.find((hall) => hall.id === selectedHallId)}
-            className="open-sale-button"
-          >
-        <span
-    className={
-      hallsState.find((hall) => hall.id === selectedHallId)?.isActive
-        ? "text-pause"
-        : "text-open"
-    }
-  >
-    {hallsState.find((hall) => hall.id === selectedHallId)?.isActive
-      ? "Приостановить продажу билетов"
-      : "Открыть продажу билетов"}
-  </span>
-          </button>
+              </button>
+            )}
+          </div>
         )}
-      </div>
-    </section>
+      </section>
     </div>
   );
 };
